@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dark Shop — Нэвтрэх</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+
+<body data-page="login">
+  <div class="topbar">
+    <div class="header container">
+      <a class="brand" href="main.html">
+        <span class="brand-badge"></span>
+        <span>Dark Shop</span>
+      </a>
+
+      <nav class="nav">
+        <a href="main.html">Үндсэн</a>
+        <a href="contact.html">Бидэнтэй холбогдох</a>
+      </nav>
+
+      <div class="grow"></div>
+
+      <form id="searchForm" class="search" role="search">
+        <input id="searchInput" placeholder="Бараа хайх..." autocomplete="off" />
+        <button type="submit" title="Хайх">🔎</button>
+      </form>
+
+      <div class="actions">
+        <button id="openWishlist" class="btn" type="button" title="Wishlist">
+          ❤ <span id="wishBadge" class="badge" style="display:none">0</span>
+        </button>
+        <button id="openCart" class="btn" type="button" title="Сагс">
+          🛒 <span id="cartBadge" class="badge" style="display:none">0</span>
+        </button>
+        <div id="authArea"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="section-title">
+      <h2>Нэвтрэх</h2>
+      <p>Demo: <b>mojuh</b> / <b>admin123</b></p>
+    </div>
+
+    <form id="loginForm" class="form" style="margin-top:12px">
+      <div class="field">
+        <label for="username">Username</label>
+        <input id="username" placeholder="mojuh" autocomplete="username" required />
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="admin123" autocomplete="current-password" required />
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <button class="btn primary" type="submit">Нэвтрэх</button>
+        <a class="btn" href="register.html">Бүртгүүлэх</a>
+        <a class="btn" href="main.html">Үндсэн рүү</a>
+      </div>
+
+      <p id="loginMsg" class="small" style="margin-top:10px"></p>
+    </form>
+
+    <div class="footer">© Dark Shop Demo</div>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="cartDrawer" class="drawer" aria-label="Сагс">
+    <div class="drawer-head">
+      <b>Сагс</b>
+      <button id="closeCart" class="btn" type="button">Хаах ✕</button>
+    </div>
+    <div class="drawer-body">
+      <div id="cartList"></div>
+    </div>
+    <div class="drawer-foot">
+      <div class="total-row">
+        <span>Нийт</span>
+        <b id="cartTotal">0 ₮</b>
+      </div>
+      <button id="checkoutBtn" class="btn primary" type="button">Захиалах</button>
+    </div>
+  </aside>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dark Shop — Үндсэн</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+
+<body data-page="main">
+  <div class="topbar">
+    <div class="header container">
+      <a class="brand" href="main.html">
+        <span class="brand-badge"></span>
+        <span>Dark Shop</span>
+      </a>
+
+      <nav class="nav">
+        <a href="main.html">Үндсэн</a>
+        <a href="contact.html">Бидэнтэй холбогдох</a>
+      </nav>
+
+      <div class="grow"></div>
+
+      <form id="searchForm" class="search" role="search">
+        <input id="searchInput" placeholder="Бараа хайх..." autocomplete="off" />
+        <button type="submit" title="Хайх">🔎</button>
+      </form>
+
+      <div class="actions">
+        <button id="openWishlist" class="btn" type="button" title="Wishlist">
+          ❤ <span id="wishBadge" class="badge" style="display:none">0</span>
+        </button>
+        <button id="openCart" class="btn" type="button" title="Сагс">
+          🛒 <span id="cartBadge" class="badge" style="display:none">0</span>
+        </button>
+        <div id="authArea"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="hero hero-shop">
+      <div class="hero-content">
+        <p class="eyebrow">Dark Shop</p>
+        <h1>Танд тохирсон технологи, нэг дор.</h1>
+        <p>Сонголтоо хурдан шүүх, хүссэнээ хадгалах, нэг товшилтоор захиалах demo туршлага.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#products">Бараа үзэх</a>
+          <a class="btn ghost" href="contact.html">Холбогдох</a>
+        </div>
+        <div class="hero-stats">
+          <div><b>40+</b><span>Шинэ бараа</span></div>
+          <div><b>24/7</b><span>Дэмжлэг</span></div>
+          <div><b>0 ₮</b><span>Demo хүргэлт</span></div>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-card">
+          <div class="hero-thumb"></div>
+          <div class="hero-copy">
+            <div class="tag">Онцлох</div>
+            <h3 id="heroPickName">Wireless Headset</h3>
+            <p id="heroPickMeta" class="muted">Дууны чанар, тав тух</p>
+            <button class="btn primary" id="heroPickBtn" type="button">Шууд авах</button>
+          </div>
+        </div>
+        <div class="hero-strip">
+          <span>Шилдэг сонголт</span>
+          <span>Хязгаартай саналууд</span>
+          <span>Шинэ коллекц</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Онцлох бараа</h2>
+          <p>Таны сонирхолд нийцэх сонголтууд</p>
+        </div>
+        <a class="btn ghost" href="#products">Бүгдийг харах</a>
+      </div>
+      <section id="featuredGrid" class="grid grid-compact" aria-label="Онцлох бараа"></section>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Санал болгох</h2>
+          <p>Хэрэглэгчдийн хамгийн их сонирхсон</p>
+        </div>
+      </div>
+      <section id="recommendGrid" class="grid grid-compact" aria-label="Санал болгох"></section>
+    </section>
+
+    <section id="products" class="section">
+      <div class="section-head">
+        <div>
+          <h2>Бараанууд</h2>
+          <p id="filterHint">Бүх бараа</p>
+        </div>
+        <div class="section-actions">
+          <label class="select">
+            <span>Эрэмбэ</span>
+            <select id="sortSelect">
+              <option value="new">Шинэ → Хуучин</option>
+              <option value="price-asc">Үнэ: өсөх</option>
+              <option value="price-desc">Үнэ: буурах</option>
+              <option value="name">Нэрээр</option>
+            </select>
+          </label>
+          <label class="select">
+            <span>Хуудас</span>
+            <select id="pageSize">
+              <option value="8">8</option>
+              <option value="12" selected>12</option>
+              <option value="16">16</option>
+              <option value="24">24</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="filter-panel">
+        <div class="chip-wrap" aria-label="Ангилал шүүлтүүр">
+          <div id="categoryChips" class="chip-row" aria-label="Ангилал"></div>
+        </div>
+
+        <div class="filter-row">
+          <div class="field compact">
+            <label for="minPrice">Үнэ (мин)</label>
+            <input id="minPrice" type="number" min="0" placeholder="0" />
+          </div>
+          <div class="field compact">
+            <label for="maxPrice">Үнэ (макс)</label>
+            <input id="maxPrice" type="number" min="0" placeholder="1000000" />
+          </div>
+          <div class="field compact">
+            <label for="onlyWishlist">Wishlist</label>
+            <select id="onlyWishlist">
+              <option value="all">Бүгд</option>
+              <option value="only">Зөвхөн wishlist</option>
+            </select>
+          </div>
+          <button id="clearFilters" class="btn ghost" type="button">Цэвэрлэх</button>
+        </div>
+      </div>
+
+      <section id="productGrid" class="grid" aria-label="Барааны жагсаалт"></section>
+      <div id="pagination" class="pagination" aria-label="Хуудсууд"></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <div>
+          <h2>Баталгаатай үйлчилгээ</h2>
+          <p>Хүргэлт, буцаалт, дэмжлэг</p>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-card">
+          <div class="feature-icon">🚚</div>
+          <div>
+            <h4>Хурдан хүргэлт</h4>
+            <p>УБ дотор 24 цагт.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🛡️</div>
+          <div>
+            <h4>Баталгаат засвар</h4>
+            <p>Албан ёсны баталгаа.</p>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <div>
+            <h4>24/7 тусламж</h4>
+            <p>Онлайн зөвлөгөө.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">© Dark Shop Demo</div>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="cartDrawer" class="drawer" aria-label="Сагс">
+    <div class="drawer-head">
+      <b>Сагс</b>
+      <button id="closeCart" class="btn" type="button">Хаах ✕</button>
+    </div>
+    <div class="drawer-body">
+      <div id="cartList"></div>
+    </div>
+    <div class="drawer-foot">
+      <div class="total-row">
+        <span>Нийт</span>
+        <b id="cartTotal">0 ₮</b>
+      </div>
+      <button id="checkoutBtn" class="btn primary" type="button">Захиалах</button>
+    </div>
+  </aside>
+</body>
+</html>

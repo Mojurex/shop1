@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="mn">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dark Shop — Бүртгүүлэх</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+
+<body data-page="register">
+  <div class="topbar">
+    <div class="header container">
+      <a class="brand" href="main.html">
+        <span class="brand-badge"></span>
+        <span>Dark Shop</span>
+      </a>
+
+      <nav class="nav">
+        <a href="main.html">Үндсэн</a>
+        <a href="contact.html">Бидэнтэй холбогдох</a>
+      </nav>
+
+      <div class="grow"></div>
+
+      <form id="searchForm" class="search" role="search">
+        <input id="searchInput" placeholder="Бараа хайх..." autocomplete="off" />
+        <button type="submit" title="Хайх">🔎</button>
+      </form>
+
+      <div class="actions">
+        <button id="openWishlist" class="btn" type="button" title="Wishlist">
+          ❤ <span id="wishBadge" class="badge" style="display:none">0</span>
+        </button>
+        <button id="openCart" class="btn" type="button" title="Сагс">
+          🛒 <span id="cartBadge" class="badge" style="display:none">0</span>
+        </button>
+        <div id="authArea"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="section-title">
+      <h2>Бүртгүүлэх</h2>
+      <p>Шинэ хэрэглэгчийн бүртгэл (Demo)</p>
+    </div>
+
+    <form id="registerForm" class="form" style="margin-top:12px">
+      <div class="field">
+        <label for="regName">Нэр</label>
+        <input id="regName" placeholder="Таны нэр" autocomplete="name" />
+      </div>
+
+      <div class="field">
+        <label for="regEmail">Имэйл</label>
+        <input id="regEmail" type="email" placeholder="you@mail.com" autocomplete="email" />
+      </div>
+
+      <div class="field">
+        <label for="regUsername">Username</label>
+        <input id="regUsername" placeholder="newuser" autocomplete="username" required />
+      </div>
+
+      <div class="field">
+        <label for="regPassword">Password</label>
+        <input id="regPassword" type="password" placeholder="Нууц үг" autocomplete="new-password" required />
+      </div>
+
+      <div class="field">
+        <label for="regConfirm">Password давтах</label>
+        <input id="regConfirm" type="password" placeholder="Дахин оруулах" autocomplete="new-password" required />
+      </div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <button class="btn primary" type="submit">Бүртгүүлэх</button>
+        <a class="btn" href="login.html">Нэвтрэх</a>
+        <a class="btn" href="main.html">Үндсэн рүү</a>
+      </div>
+
+      <p id="registerMsg" class="small" style="margin-top:10px"></p>
+    </form>
+
+    <div class="footer">© Dark Shop Demo</div>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div id="drawerBackdrop" class="drawer-backdrop" aria-hidden="true"></div>
+  <aside id="cartDrawer" class="drawer" aria-label="Сагс">
+    <div class="drawer-head">
+      <b>Сагс</b>
+      <button id="closeCart" class="btn" type="button">Хаах ✕</button>
+    </div>
+    <div class="drawer-body">
+      <div id="cartList"></div>
+    </div>
+    <div class="drawer-foot">
+      <div class="total-row">
+        <span>Нийт</span>
+        <b id="cartTotal">0 ₮</b>
+      </div>
+      <button id="checkoutBtn" class="btn primary" type="button">Захиалах</button>
+    </div>
+  </aside>
+</body>
+</html>
